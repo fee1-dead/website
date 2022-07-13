@@ -1,0 +1,32 @@
+@font-face {
+    font-family: Iosevka Web;
+    font-display: swap;
+    font-weight: 100;
+    font-stretch: normal;
+    font-style: normal;
+    src: url(https://typeof.net/Iosevka/_next/static/media/iosevka-thin.f1613128.woff2)
+    format("woff2")
+}
+
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f3f3f3;
+
+    > li {
+        &.left { float: left; }
+        &.right { float: right; }
+
+        > a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+        }
+    }
+}
+
+body {
+    margin: 0;
+}

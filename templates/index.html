@@ -1,7 +1,22 @@
+<!DOCTYPE html>
+<head>
+    {% include "header.html" %}
+</head>
+
 <body>
+    <ul class="navbar">
+        <li class="left">Deadbeef's Blog</li>
+        <li class="right"><a href = {{ get_url(path = "@/_index.md") }}>Home</a></li>
+
+        {% set section = get_section(path = "_index.md") %}
+        {% for page in section.pages %}
+            <li class="right"><a href = {{ get_url(path = page.path) }}>
+                {{ page.title }}
+            </a></li>
+        {% endfor %}
+    </ul>
     <article>
-        <a href = {{ get_url(path = "@/_index.md") }}>Home</a>
-        <a href = {{ get_url(path = "@/about.md") }}>About</a>
+        {% set section = get_section(path = "posts/_index.md") %}
         <ul>
             {% for page in section.pages %}
                 <li><a href = {{page.permalink}}>{{ page.title }}</a></li>
