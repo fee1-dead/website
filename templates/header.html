@@ -1,1 +1,80 @@
 <link rel="stylesheet" href={{ get_url(path="common.css") }}>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<script>
+    // literally just disable javascript.
+
+    document.addEventListener('DOMContentLoaded', event => {
+        const mode = document.cookie
+            .split('; ')
+            .filter(row => row.startsWith('mode='))
+            .map(row => row.substring(5));
+
+        const prefer_dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const color_mode_element = document.getElementById('color-mode');
+
+        let dark;
+        if (mode.length > 0) {
+            dark = mode[0] === 'true';
+        } else {
+            dark = color_mode_element.checked;
+            if (prefer_dark) {
+                dark = !dark;
+            }
+        }
+
+        document.cookie = "mode=" + dark + "; SameSite=Strict";
+        
+        let should_check = dark;
+        if (prefer_dark) should_check = !should_check;
+        
+        color_mode_element.checked = should_check;
+
+        color_mode_element.addEventListener('change', () => {
+            let dark = color_mode_element.checked;
+            if (prefer_dark) {
+                dark = !dark;
+            }
+            document.cookie = "mode=" + dark + "; SameSite=Strict";
+            let comment_form = document.querySelector("iframe.giscus-frame");
+            if (comment_form != null) {
+                let theme;
+                if (dark) theme = "dark";
+                else theme = "light";
+                comment_form.contentWindow.postMessage({
+                    giscus: { setConfig: { theme: theme } }
+                }, "https://giscus.app")
+            }
+        });
+
+        let article = document.getElementById('article');
+
+        if (article) {
+            let theme;
+            if (dark) theme = "dark";
+            else theme = "light";
+            
+            let discuz = document.createElement('script');
+            discuz.setAttribute('src', 'https://giscus.app/client.js');
+            discuz.setAttribute('data-repo', 'fee1-dead/fee1-dead.github.io');
+            discuz.setAttribute('data-repo-id', 'R_kgDOGaewSg');
+            discuz.setAttribute('data-category', 'Discussion');
+            discuz.setAttribute('data-category-id', 'DIC_kwDOGaewSs4CQRXB');
+            discuz.setAttribute('data-mapping', 'title');
+            discuz.setAttribute('data-reactions-enabled', '1');
+            discuz.setAttribute('data-emit-metadata', '0');
+            discuz.setAttribute('data-input-position', 'top');
+            discuz.setAttribute('data-theme', theme);
+            discuz.setAttribute('data-lang', 'en');
+            discuz.setAttribute('data-loading', 'lazy');
+            discuz.setAttribute('crossorigin', 'anonymous');
+            discuz.setAttribute('async', '');
+            article.appendChild(discuz);
+        }
+    });
+
+    
+    
+    
+
+</script>
