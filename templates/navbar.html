@@ -1,15 +1,10 @@
-<input id="color-mode" type="checkbox" name="color-mode">
-<label id="color-mode-label" for="color-mode">
-    <span class="dark-mode-hide">Dark Mode</span>
-    <span class="light-mode-hide">Light Mode</span>
-</label>
 <ul class="navbar">
-    <li class="left blogtitle">deadbeef's blog</li>
-    <li class="right"><a href = {{ get_url(path = "@/_index.md") }}>home</a></li>
+    <!-- <li class="left blogtitle">deadbeef's blog</li> -->
+    <li class="left"><a href = {{ get_url(path = "@/_index.md") }}>home</a></li>
 
     {% set section = get_section(path = "_index.md") %}
     {% for page in section.pages %}
-        <li class="right"><a href = {{ get_url(path = page.path) }}>
+        <li class="left"><a href = {{ get_url(path = page.path) }}>
             {{ page.title }}
         </a></li>
     {% endfor %}
