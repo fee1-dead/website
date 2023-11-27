@@ -9,6 +9,11 @@ build_search_index = true
 
 theme = "zerm"
 
+taxonomies = [
+           {name = "tags"},
+           {name = "categories"},
+]
+
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
@@ -22,8 +27,11 @@ show_categories = false
 show_tags = true
 theme_color = "pink"
 enable_katex = true
+center = true
+read_more = "read"
 main_menu = [
     {url="/about/", name="about"},
     {url="https://github.com/fee1-dead/fee1-dead.github.io", name="GitHub", external=true},
 ]
+custom_css = true
 # Put all your custom variables here
