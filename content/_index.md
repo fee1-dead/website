@@ -1,3 +1,4 @@
 +++
-title = "Someone's blog"
+title = "aaaaaaaaaa"
+paginate_by = 5
 +++
