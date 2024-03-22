@@ -14,6 +14,12 @@ taxonomies = [
            {name = "categories"},
 ]
 
+# metadata for Atom feed
+author = "beef"
+title = "Deadbeef's Blog"
+generate_feed = true
+default_language = "en"
+
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
