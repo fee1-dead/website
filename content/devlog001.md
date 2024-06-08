@@ -1,6 +1,5 @@
 +++
 title = "Devlog 001"
-paginate_by = 5
 date = "2023-11-27"
 description = ".. What's the point of them, anyway?"
 [taxonomies]
