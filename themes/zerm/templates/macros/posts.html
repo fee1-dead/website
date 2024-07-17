@@ -1,10 +1,14 @@
 {% macro section_meta(section, author) %}
     <div class="post-meta">
         <span class="post-date">
-
             {%- if section.extra["date"] -%}
                 {{ section.extra["date"] | date(format="%Y.%m.%d") }}
                 {# end of section.date if-check #}
+            {%- endif -%}
+
+            {%- if section.extra["updated"] -%}
+                [Updated: {{ section.extra["updated"] | date(format="%Y.%m.%d") }}]
+                {# end of section.updated if-check #}
             {%- endif -%}
         </span>
 
