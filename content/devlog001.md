@@ -3,7 +3,7 @@ title = "Devlog 001"
 date = "2023-11-27"
 description = ".. What's the point of them, anyway?"
 [taxonomies]
-tags = ["rust", "devlog"]
+tags = ["rust", "devlog", "dev"]
 +++
 
 

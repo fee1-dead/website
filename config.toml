@@ -27,7 +27,7 @@ highlight_code = true
 
 [extra]
 author = "Deadbeef"
-logo_text = "aaaaaaaaaaaaaa"
+logo_text = "beef"
 show_author = false
 show_categories = false
 show_tags = true
