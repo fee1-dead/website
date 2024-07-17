@@ -23,7 +23,7 @@ Okay. Linux uses Git. Surely there's not much difference to contributing to a pr
 * Clone the code. See? It's the same as.. wait a second. Okay. There are many different trees other than the mainline tree and depending on where you send the patch to, you may want to choose the tree _they're_ using.
 * Write the change. Well this part is the same as developing on any project, except you'd just be writing code for Linux instead.
 * Commit. You'd need to add the relevant Closes: and the Signed-off-by: tags. Not too hard, but still different.
-* Submit the patch. As the last step, you have to send an email to the correctly place that would review your patch. You'd either have to configure Git to authenticate to your email and send an email with `git send-email`, or configure your email client to send in plain-text your patch.
+* Submit the patch. As the last step, you have to send an email to the correct place that would review your patch. You'd either have to configure Git to authenticate to your email and send an email with `git send-email`, or configure your email client to send in plain-text your patch.
 
 ### What went wrong?
 
