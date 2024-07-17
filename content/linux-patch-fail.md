@@ -69,10 +69,12 @@ the lines starting with a `+` in that patch. That resulted in [this](https://git
 
 Okay wait. I wanted to end my blogpost there. That was my original plan. I write about an indentation mistake I did when submitting a patch for Linux, for some reason they decided to accept it, but it was my fault, I would apologize for that and hope people understand the mistake as a first-time contributor. But the indentation looks [perfectly fine](https://gitlab.freedesktop.org/agd5f/linux/-/commit/0f35b0a7b8fa402adbffa2565047cdcc4c480153) in the reviewer's git repo.
 
-Did they fix it for me? Why did the diff on mainline Linux look like that then? Well I had a theory. The indentation in different trees were different, so when a patch based on the amd tree got sent to the mainline, the indentation did not match the code on the mainline tree. So it was not something caused by poor indentation on my side..
+Did they fix it for me? Why did the diff on mainline Linux look like that then? Well I had a theory. The indentation in different trees were different, so when a patch based on the amd tree got sent to the mainline, the indentation did not match the code on the mainline tree. So it was not something caused by poor indentation on my side..[^1]
 
-I had taken on guilt for a mistake that did not exist in the first place. And blogging about it was how I discovered the truth. Oh well.
+I had taken on guilt for poor indentation that I thought landed to the mainline. When the reviewer probably fixed it themselves, and the indentation problem I thought was caused by me was probably due to something else. And blogging about it was how I discovered the truth. Oh well.
 
 ### Closing
 
 So that's my experience of sending a patch to the Linux kernel for the first time. Rust for Linux looks like it is being actively developed. If it actually goes to the mainstream, it might give me more opportunity to contribute to Linux with a language that I actually understand. Hopefully, this won't be the last patch I will submit to Linux!
+
+[^1]: Well that's what I _think_ has happened. If anyone know what actually happened please let me know.
