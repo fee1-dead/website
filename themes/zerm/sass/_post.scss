@@ -65,34 +65,8 @@
     margin-top: 30px;
   }
 
-  ul {
-    list-style: none;
-
-    li:before {
-      content: '⦿';
-      position: absolute;
-      left: -20px;
-      color: var(--accent);
-    }
-    ul {
-
-      li:before {
-        content: '■';
-        position: absolute;
-        left: -20px;
-        color: var(--accent);
-      }
-
-      ul {
-
-        li:before {
-          content: '►';
-          position: absolute;
-          left: -20px;
-          color: var(--accent);
-        }
-      }
-    }
+  ul li::marker {
+    color: var(--accent);
   }
 }
 
