@@ -4,3 +4,14 @@
 body {
     font-family: 'IBM Plex Sans', 'Fira Code', Menlo, DejaVu Sans Mono, Monaco, Consolas, Ubuntu Mono, monospace;
 }
+
+:root {
+    --accent: rgb(155,89,208);
+    --accent-alpha-20: rgba(155,89,208,.2);
+    --accent-alpha-70: rgba(155,89,208,.7);
+    --background: rgb(45,45,45);
+    --color: rgb(255, 248, 231);
+    --border-color: rgba(255, 248, 231, .1);
+    --footnote-color: rgba(255, 248, 231, .5);
+  }
+  

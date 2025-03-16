@@ -17,7 +17,8 @@ taxonomies = [
 # metadata for Atom feed
 author = "beef"
 title = "Deadbeef's Blog"
-generate_feed = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
 default_language = "en"
 
 [markdown]
