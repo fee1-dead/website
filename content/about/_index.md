@@ -6,7 +6,12 @@ date = 2023-11-27
 updated = 2024-07-17
 +++
 
-Hi! I'm beef (they/them). I mainly do Rust compiler stuff, but maybe that won't be the primary focus of this blog. We'll see.
+Hi! I'm beef (they/them). I mainly contribute to the Rust compiler. I can speak Chinese.
 
 My GitHub: [@fee1-dead](https://github.com/fee1-dead)
 
+My ActivityPub/Mastodon: <a href="https://hachyderm.io/@beef" rel="me">@beef@hachyderm.io</a>
+
+My Discord Server: [discord.gg/P4TYU5SyFM](discord.gg/P4TYU5SyFM)
+
+My Discord account: dbeef
