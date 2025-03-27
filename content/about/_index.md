@@ -3,7 +3,7 @@ title = "about"
 
 [extra]
 date = 2023-11-27
-updated = 2024-07-17
+updated = 2025-03-27
 +++
 
 Hi! I'm beef (they/them). I mainly contribute to the Rust compiler. I can speak Chinese.
