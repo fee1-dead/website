@@ -135,8 +135,8 @@ a cron job. But I got there in the end.
 ### `w`
 
 Yeah, it's [another MediaWiki API library](https://github.com/fee1-dead/w). I originally wanted to use the name `mw`
-seeing that it wasn't used at the time, but it got taken by a [bogus](https://crates.io/crates/mw) crate. I talked to
-the person who took that name and they refused to give it to me. Luckily the even shorter name `w` was available, so
+seeing that it wasn't used at the time, but it got taken by a [different](https://crates.io/crates/mw) crate. I talked
+to the person who took that name and they refused to give it to me. Luckily the even shorter name `w` was available, so
 yay!
 
 `w` wants to be minimal because it doesn't want to make assumptions about how one should use it. My previous library was
