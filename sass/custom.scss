@@ -1,17 +1,46 @@
 @import "iosevka.scss";
 @import "ibmplexsans.scss";
+@import url("one-dark.css");
 
 body {
     font-family: 'IBM Plex Sans', 'Fira Code', Menlo, DejaVu Sans Mono, Monaco, Consolas, Ubuntu Mono, monospace;
 }
 
+code {
+    font-family: 'Iosevka';
+    color: var(--color);
+}
+
+pre code {
+    color: #c0c5ce;
+}
+
+// suppress glaring highlight of "invalid" syntax
+.z-invalid.z-illegal {
+    background-color: unset;
+    color: inherit;
+}
+
+.post-title a {
+    color: var(--accent);
+}
+
+.post-meta a {
+    color: var(--color);
+}
+
+a {
+    color: var(--link-color);
+}
+
 :root {
     --accent: rgb(155,89,208);
     --accent-alpha-20: rgba(155,89,208,.2);
-    --accent-alpha-70: rgba(155,89,208,.7);
+    --accent-alpha-70: --color;
     --background: rgb(45,45,45);
     --color: rgb(255, 248, 231);
     --border-color: rgba(255, 248, 231, .1);
     --footnote-color: rgba(255, 248, 231, .5);
-  }
+    --link-color: #FFF433;
+}
   
