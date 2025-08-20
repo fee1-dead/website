@@ -43,7 +43,7 @@ center = true
 read_more = "read"
 main_menu = [
     {url="/about/", name="about"},
-    {url="https://github.com/fee1-dead/fee1-dead.github.io", name="GitHub", external=true},
+    {url="https://github.com/fee1-dead/website", name="GitHub", external=true},
 ]
 custom_css = true
 # Put all your custom variables here
