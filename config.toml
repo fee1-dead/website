@@ -29,6 +29,7 @@ highlight_theme = "css"
 highlight_themes_css = [
   { theme = "one-dark", filename = "one-dark.css" }
 ]
+github_alerts = true
 
 [extra]
 author = "beef"

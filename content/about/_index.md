@@ -3,10 +3,11 @@ title = "about"
 
 [extra]
 date = 2023-11-27
-updated = 2025-06-09
+updated = 2025-08-20
 +++
 
-Hi! I'm beef (they/them). I mainly contribute to the Rust compiler. Please let me know how you think of this blog :)
+Hi! I'm beef (they/them). I mainly contribute to the Rust compiler. If you like my posts or have any questions,
+feel free to reach out and let me know :)
 
 My GitHub: [@fee1-dead](https://github.com/fee1-dead)
 

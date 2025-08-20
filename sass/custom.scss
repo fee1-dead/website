@@ -1,9 +1,30 @@
+@import "aside.scss";
 @import "iosevka.scss";
 @import "ibmplexsans.scss";
 @import url("one-dark.css");
 
+article .post {
+    width: 50vw;
+}
+
 body {
     font-family: 'IBM Plex Sans', 'Fira Code', Menlo, DejaVu Sans Mono, Monaco, Consolas, Ubuntu Mono, monospace;
+}
+
+body, code, pre, .footer .copyrigt {
+    font-size: 1.2rem;
+}
+
+blockquote p::before {
+    content: "ⓘ";
+    font-weight: 700;
+    font-size: 1.5em;
+    position: absolute;
+    left: -1.5em;
+}
+
+blockquote p {
+    margin-left: 1em;
 }
 
 code {
@@ -13,6 +34,11 @@ code {
 
 pre code {
     color: #c0c5ce;
+}
+
+// don't wrap inline code comments (treat them as whole wordbs)
+:not(pre) > code {
+    white-space: nowrap;
 }
 
 // suppress glaring highlight of "invalid" syntax
