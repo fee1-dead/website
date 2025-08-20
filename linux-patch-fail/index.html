@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>My First Patch to Linux - beef</title>
+    
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><meta name="description" content=" My First Patch to Linux it wasn&#x27;t good but it got accepted anyways but there&#x27;s a twist"/><meta name="keywords" content="dev" />
+    <meta property="og:title" content="beef&#x27;s blog -&nbsp;My First Patch to Linux" />
+    <meta property="og:type" content="website"/><meta property="og:url" content="https:&#x2F;&#x2F;dbeef.dev&#x2F;linux-patch-fail&#x2F;"/><meta property="og:description" content="it wasn&#x27;t good but it got accepted anyways but there&#x27;s a twist"/>
+    <link rel="preload" href="https://dbeef.dev/assets/fonts/FiraCode-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://dbeef.dev/assets/fonts/FiraCode-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://dbeef.dev/style.css?h=50ea90d7436f0498b98e">
+    <link rel="stylesheet" href="https://dbeef.dev/color/pink.css?h=49a4d53acd4ed3dfff01"><link rel="stylesheet" href="https://dbeef.dev/custom.css?h=b206be001cea8da9217f">
+    
+</head>
+    <body>
+        <div class="container center">
+<header class="header">
+    <div class="header__inner">
+        <div class="header__logo">
+            <a href="https:&#x2F;&#x2F;dbeef.dev">
+    <div class="logo">
+        beef
+    </div>
+</a>
+        </div>
+        <div class="menu-trigger">menu</div>
+    </div>
+    
+    <nav class="menu">
+        <ul class="menu__inner menu__inner--desktop">
+            
+            
+        <li>
+            <a href="
+    
+        https://dbeef.dev/about
+    
+">about</a>
+        </li>
+        <li>
+            <a href="
+    
+        https:&#x2F;&#x2F;github.com&#x2F;fee1-dead&#x2F;website
+    
+">GitHub</a>
+        </li></ul>
+
+        <ul class="menu__inner menu__inner--mobile">
+            
+        <li>
+            <a href="
+    
+        https://dbeef.dev/about
+    
+">about</a>
+        </li>
+        <li>
+            <a href="
+    
+        https:&#x2F;&#x2F;github.com&#x2F;fee1-dead&#x2F;website
+    
+">GitHub</a>
+        </li>
+        </ul>
+    </nav>
+
+    </header>
+<div class="content"><article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https:&#x2F;&#x2F;dbeef.dev&#x2F;linux-patch-fail&#x2F;">My First Patch to Linux</a>
+            </h1>
+            
+    <div class="post-meta">
+        <span class="post-date">2024.07.17
+                </span>
+
+        <span class="post-author"></span>
+
+        
+
+    
+    ::
+    #<a href="https://dbeef.dev/tags/dev/">dev</a>
+        
+    
+            
+        
+    
+    </div>
+
+            
+    
+</header><p>About half a year ago, I <a href="https://lists.freedesktop.org/archives/amd-gfx/2024-January/102810.html">submitted</a> my first patch to Linux. I initially thought the patch wasn't good, but I discovered something as I finished writing this blog post. Anyways, it was interesting to learn a very different system for submitting code to upstream.</p>
+<h3 id="discovering-the-issue">Discovering the issue</h3>
+<p>I got a brand new graphics card and I wanted to play with it. But Linux wouldn't let me. Some
+searches led me to <a href="https://gitlab.freedesktop.org/drm/amd/-/issues/2991">this issue</a> where people have bisected the cause. So why don't we just revert the commit that caused it? I did that, tried
+running with the kernel with that commit reverted and the issue got fixed again.</p>
+<p>So.. there's probably something wrong in that commit. Although I have no experience in writing graphics drivers in C, submitting the revert upstream should be easy..</p>
+<h3 id="following-the-guide">Following the guide</h3>
+<p>Okay. Linux uses Git. Surely there's not much difference to contributing to a project on GitHub, right? Well, no. Let's do a brief walkthrough of the <a href="https://docs.kernel.org/process/submitting-patches.html">guide</a> to submitting a patch to Linux:</p>
+<ul>
+<li>Clone the code. See? It's the same as.. wait a second. Okay. There are many different trees other than the mainline tree and depending on where you send the patch to, you may want to choose the tree <em>they're</em> using.</li>
+<li>Write the change. Well this part is the same as developing on any project, except you'd just be writing code for Linux instead.</li>
+<li>Commit. You'd need to add the relevant Closes: and the Signed-off-by: tags. Not too hard, but still different.</li>
+<li>Submit the patch. As the last step, you have to send an email to the correct place that would review your patch. You'd either have to configure Git to authenticate to your email and send an email with <code>git send-email</code>, or configure your email client to send in plain-text your patch.</li>
+</ul>
+<h3 id="what-went-wrong">What went wrong?</h3>
+<p>Well.. I had no trouble <em>producing</em> a patch that could get sent upstream, in the end, it was just a simple revert. Even though there were some conflicts, editing the code for a revert was still quite easy. <em>Sending</em> the patch was a bit of nuisance, as I had to configure gmail to send in plain-text mode and copy the patch there, but still, there were no problems.</p>
+<p>The problem was something in between. Unfamiliar with the patch format as I was, I got confused about indentation.</p>
+<pre data-lang="patch" class="language-patch z-code"><code class="language-patch" data-lang="patch"><span class="z-source z-diff"><span class="z-meta z-diff z-range z-unified"><span class="z-meta z-range z-unified z-diff"><span class="z-punctuation z-definition z-range z-diff">@@</span> <span class="z-meta z-toc-list z-line-number z-diff">-345,18 +339,18</span> <span class="z-punctuation z-definition z-range z-diff">@@</span> <span class="z-entity z-name z-section z-diff">static void kfd_init_apertures_v9(struct kfd_process_device *pdd, uint8_t id)</span>
+</span></span></span><span class="z-source z-diff">        pdd-&gt;lds_base = MAKE_LDS_APP_BASE_V9();
+</span><span class="z-source z-diff">        pdd-&gt;lds_limit = MAKE_LDS_APP_LIMIT(pdd-&gt;lds_base);
+</span><span class="z-source z-diff">
+</span><span class="z-source z-diff"><span class="z-markup z-deleted z-diff"><span class="z-punctuation z-definition z-deleted z-diff">-</span>       pdd-&gt;gpuvm_base = PAGE_SIZE;
+</span></span><span class="z-source z-diff"><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">+</span>       /* Raven needs SVM to support graphic handle, etc. Leave the small
+</span></span><span class="z-source z-diff"><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">+</span>        * reserved space before SVM on Raven as well, even though we don&#39;t
+</span></span><span class="z-source z-diff"><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">+</span>        * have to.
+</span></span><span class="z-source z-diff"><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">+</span>        * Set gpuvm_base and gpuvm_limit to CANONICAL addresses so that they
+</span></span><span class="z-source z-diff"><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">+</span>        * are used in Thunk to reserve SVM.
+</span></span><span class="z-source z-diff"><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">+</span>        */
+</span></span><span class="z-source z-diff"><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">+</span>       pdd-&gt;gpuvm_base = SVM_USER_BASE;
+</span></span><span class="z-source z-diff">        pdd-&gt;gpuvm_limit =
+</span><span class="z-source z-diff">                pdd-&gt;dev-&gt;kfd-&gt;shared_resources.gpuvm_size - 1;
+</span><span class="z-source z-diff">
+</span><span class="z-source z-diff">        pdd-&gt;scratch_base = MAKE_SCRATCH_APP_BASE_V9();
+</span><span class="z-source z-diff">        pdd-&gt;scratch_limit = MAKE_SCRATCH_APP_LIMIT(pdd-&gt;scratch_base);
+</span><span class="z-source z-diff"><span class="z-markup z-deleted z-diff"><span class="z-punctuation z-definition z-deleted z-diff">-</span>
+</span></span><span class="z-source z-diff"><span class="z-markup z-deleted z-diff"><span class="z-punctuation z-definition z-deleted z-diff">-</span>       /*
+</span></span><span class="z-source z-diff"><span class="z-markup z-deleted z-diff"><span class="z-punctuation z-definition z-deleted z-diff">-</span>        * Place TBA/TMA on opposite side of VM hole to prevent
+</span></span><span class="z-source z-diff"><span class="z-markup z-deleted z-diff"><span class="z-punctuation z-definition z-deleted z-diff">-</span>        * stray faults from triggering SVM on these pages.
+</span></span><span class="z-source z-diff"><span class="z-markup z-deleted z-diff"><span class="z-punctuation z-definition z-deleted z-diff">-</span>        */
+</span></span><span class="z-source z-diff"><span class="z-markup z-deleted z-diff"><span class="z-punctuation z-definition z-deleted z-diff">-</span>       pdd-&gt;qpd.cwsr_base = pdd-&gt;dev-&gt;kfd-&gt;shared_resources.gpuvm_size;
+</span></span><span class="z-source z-diff"> }
+</span></code></pre>
+<p>.. Am I sure that the code in the <code>+</code>s of the patch are aligned with the rest of the code there?
+Wouldn't that just have one less space when you apply the patch? Shouldn't the patched parts have
+an additional space compared to the rest?</p>
+<p>In the midst of questioning myself and indentation of patches, I decided to add an extra space to all
+the lines starting with a <code>+</code> in that patch. That resulted in <a href="https://github.com/torvalds/linux/commit/0f35b0a7b8fa402adbffa2565047cdcc4c480153">this</a>. Indentation looks out of place, all due to my poor formatting..</p>
+<h3 id="huh">Huh?</h3>
+<p>Okay wait. I wanted to end my blogpost there. That was my original plan. I write about an indentation mistake I did when submitting a patch for Linux, for some reason they decided to accept it, but it was my fault, I would apologize for that and hope people understand the mistake as a first-time contributor. But the indentation looks <a href="https://gitlab.freedesktop.org/agd5f/linux/-/commit/0f35b0a7b8fa402adbffa2565047cdcc4c480153">perfectly fine</a> in the reviewer's git repo.</p>
+<p>Did they fix it for me? Why did the diff on mainline Linux look like that then? Well I had a theory. The indentation in different trees were different, so when a patch based on the amd tree got sent to the mainline, the indentation did not match the code on the mainline tree. So it was not something caused by poor indentation on my side..<sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<p>I had taken on guilt for poor indentation that I thought landed to the mainline. When the reviewer probably fixed it themselves, and the indentation problem I thought was caused by me was probably due to something else. And blogging about it was how I discovered the truth. Oh well.</p>
+<h3 id="closing">Closing</h3>
+<p>So that's my experience of sending a patch to the Linux kernel for the first time. Rust for Linux looks like it is being actively developed. If it actually goes to the mainstream, it might give me more opportunity to contribute to Linux with a language that I actually understand. Hopefully, this won't be the last patch I will submit to Linux!</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Well that's what I <em>think</em> has happened. If anyone know what actually happened please let me know.</p>
+</div>
+
+
+        
+    
+
+        
+        
+    </article></div>
+    <div class="pagination">
+        <div class="pagination__buttons">
+            </div>
+    </div>
+<footer class="footer">
+                    <div class="footer__inner"><div class="copyright">
+            <span>© 2024 <a href="https://github.com/fee1-dead">beef</a> :: Powered by <a href="https://www.getzola.org/">Zola</a></span>
+            <span>:: Theme: <a href="https://github.com/ejmg/zerm">zerm</a> made by <a href="https://github.com/ejmg">ejmg</a></span>
+        </div>
+    <script type="text/javascript" src="https://dbeef.dev/assets/js/main.js"></script>
+</div>
+                    
+<span><a href="https://dbeef.dev/atom.xml">Atom Feed</a></a></span>
+
+                </footer></div>
+    </body>
+</html>

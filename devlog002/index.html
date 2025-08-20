@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Devlog 002 - beef</title>
+    
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><meta name="description" content=" Devlog 002 I promise it&#x27;s cool stuff"/><meta name="keywords" content="rust, wikimedia, devlog, dev" />
+    <meta property="og:title" content="beef&#x27;s blog -&nbsp;Devlog 002" />
+    <meta property="og:type" content="website"/><meta property="og:url" content="https:&#x2F;&#x2F;dbeef.dev&#x2F;devlog002&#x2F;"/><meta property="og:description" content="I promise it&#x27;s cool stuff"/>
+    <link rel="preload" href="https://dbeef.dev/assets/fonts/FiraCode-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://dbeef.dev/assets/fonts/FiraCode-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://dbeef.dev/style.css?h=50ea90d7436f0498b98e">
+    <link rel="stylesheet" href="https://dbeef.dev/color/pink.css?h=49a4d53acd4ed3dfff01"><link rel="stylesheet" href="https://dbeef.dev/custom.css?h=b206be001cea8da9217f">
+    
+</head>
+    <body>
+        <div class="container center">
+<header class="header">
+    <div class="header__inner">
+        <div class="header__logo">
+            <a href="https:&#x2F;&#x2F;dbeef.dev">
+    <div class="logo">
+        beef
+    </div>
+</a>
+        </div>
+        <div class="menu-trigger">menu</div>
+    </div>
+    
+    <nav class="menu">
+        <ul class="menu__inner menu__inner--desktop">
+            
+            
+        <li>
+            <a href="
+    
+        https://dbeef.dev/about
+    
+">about</a>
+        </li>
+        <li>
+            <a href="
+    
+        https:&#x2F;&#x2F;github.com&#x2F;fee1-dead&#x2F;website
+    
+">GitHub</a>
+        </li></ul>
+
+        <ul class="menu__inner menu__inner--mobile">
+            
+        <li>
+            <a href="
+    
+        https://dbeef.dev/about
+    
+">about</a>
+        </li>
+        <li>
+            <a href="
+    
+        https:&#x2F;&#x2F;github.com&#x2F;fee1-dead&#x2F;website
+    
+">GitHub</a>
+        </li>
+        </ul>
+    </nav>
+
+    </header>
+<div class="content"><article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https:&#x2F;&#x2F;dbeef.dev&#x2F;devlog002&#x2F;">Devlog 002</a>
+            </h1>
+            
+    <div class="post-meta">
+        <span class="post-date">2025.06.09
+                </span>
+
+        <span class="post-author"></span>
+
+        
+
+    
+    ::
+    #<a href="https://dbeef.dev/tags/rust/">rust</a>
+        
+    #<a href="https://dbeef.dev/tags/wikimedia/">wikimedia</a>
+        
+    #<a href="https://dbeef.dev/tags/devlog/">devlog</a>
+        
+    #<a href="https://dbeef.dev/tags/dev/">dev</a>
+        
+    
+            
+        
+    
+    </div>
+
+            
+    
+</header><p>Hi y'all! It's been <a href="../devlog001/">a while</a> since I've done a devlog, and I figured it's time to share a bunch of things
+I have worked on, just to celebrate what I've done and take some time to reflect on what I could do next.</p>
+<p>Let's get into it!</p>
+<h2 id="rust-related-stuff">Rust related stuff</h2>
+<h3 id="const-traits">Const Traits</h3>
+<p>I've been working on this feature for almost <a href="https://github.com/rust-lang/rust/pull/86750">four years</a> now, and the
+feature is only recently getting some momentum towards finally being accepted. <a href="https://github.com/oli-obk">Oli</a> opened a <a href="https://github.com/rust-lang/rfcs/pull/3762">new RFC</a> which drew a lot
+of commentary and the lang team seems ready to accept, though only after we figure out how the syntax works. There's a
+lot of design work, which includes debating the syntax and finding reasons why one color for the shed works better than
+the other, which is happening at the <a href="https://rust-lang.zulipchat.com/#narrow/channel/328082-t-lang.2Feffects">#t-lang/effects Zulip channel</a>. I tried to articulate reasons for the colors I
+prefer, and I was moderately successful in convincing the lang team into adopting some of the choice.</p>
+<p>I'm actually hoping that const traits can get stabilized this year, given the amount of time and effort everyone is
+putting in to polish the language design into completion. I'm glad that I was able to help (even though <a href="https://github.com/compiler-errors">errs</a> did a
+really fantastic job of figuring out the compiler architecture to make the thing robust and easy to develop) on the
+compiler side to push things to a stable and well-tested state.</p>
+<h3 id="frontmatters">Frontmatters</h3>
+<p><a href="https://github.com/rust-lang/rust/pull/140035">This</a> was a particularly cool PR because I think I like working on the
+compiler frontend. The backstory to that, though, was that I gave a lot of pedantic reviews in the original PR and made
+<a href="https://github.com/epage">epage</a>, the original author who drafted an implementation, quite annoyed at me. But at the same time, I wanted to
+ensure that the compiler has a solid quality code to work off of, especially when it comes to initial implementations of
+a feature. So I offered to implement it. It wasn't too bad because it wasn't my first time working on the lexer/parser
+part of the frontend, with my experience implementing <a href="https://github.com/rust-lang/rust/pull/113476">c-str literals</a>. Mapping out all the possible error cases and how
+best to handle them did take some time though. It was a nice learning experience nonetheless.</p>
+<h3 id="reviews">Reviews</h3>
+<p>I really like spending time to review PRs. At time of writing, I have 272 <a href="https://github.com/rust-lang/rust/pulls?q=is%3Apr+assignee%3Afee1-dead+is%3Amerged+">reviewed PRs</a> that have been merged into
+rust-lang/rust. I'm also sometimes really nitpicky when it comes to reviews. I think it is good to point out things that
+the other person may have not noticed instead of silently accepting, and it is also good to hear from different
+perspectives whether I am a reviewer or a PR author. I want to do more reviews and if I get bored I might steal some.</p>
+<h3 id="ast-visitor-stuff">AST visitor stuff</h3>
+<p>I'm trying to deduplicate the AST <code>Visitor</code> and <code>MutVisitor</code> functions in rustc. The work is currently tracked at
+<a href="https://github.com/rust-lang/rust/issues/127615">#127615</a>, and it's mostly an exercise for me to get back at developing rustc in my free time. I've done some really
+clever stuff in the mean time:</p>
+<p><code>Visitor</code> is allowed to return a <code>ControlFlow</code> while visiting stuff, this is controlled by the implementer's choice when
+<code>impl</code>ing <code>Visitor</code> and setting the <code>Result</code> associated type to <code>ControlFlow</code> instead of the <code>()</code> by default.</p>
+<p><code>MutVisitor</code> does not allow returning <code>ControlFlow</code>s and only allows returning <code>()</code>s. This creates some hassle while
+writing the macro that emits functions for both visitors. My first solution to this is to use something like the
+following:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-meta z-function z-rust"><span class="z-meta z-function z-rust"><span class="z-storage z-type z-function z-rust">fn</span> </span><span class="z-entity z-name z-function z-rust">visit_id</span></span><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>$<span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-variable z-other z-rust">$lt</span>,<span class="z-punctuation z-section z-group z-end z-rust">)</span><span class="z-invalid z-illegal z-rust">?</span></span> V<span class="z-punctuation z-separator z-rust">:</span> <span class="z-variable z-other z-rust">$Visitor</span><span class="z-keyword z-operator z-rust">$</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-keyword z-operator z-comparison z-rust">&lt;</span><span class="z-variable z-other z-rust">$lt</span><span class="z-keyword z-operator z-comparison z-rust">&gt;</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-keyword z-operator z-rust">?</span><span class="z-keyword z-operator z-comparison z-rust">&gt;</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span>vis<span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-bitwise z-rust">&amp;</span><span class="z-storage z-modifier z-rust">mut</span> V<span class="z-punctuation z-separator z-rust">,</span> id<span class="z-punctuation z-separator z-rust">:</span> <span class="z-keyword z-operator z-bitwise z-rust">&amp;</span><span class="z-keyword z-operator z-rust">$</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-variable z-other z-rust">$lt</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-keyword z-operator z-rust">?</span> <span class="z-keyword z-operator z-rust">$</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-variable z-other z-rust">$mut</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-keyword z-operator z-rust">?</span> NodeId</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span> <span class="z-keyword z-operator z-rust">$</span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span><span class="z-meta z-function z-return-type z-rust"><span class="z-punctuation z-separator z-rust">-&gt;</span> <span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>V <span class="z-keyword z-operator z-rust">as</span> <span class="z-meta z-generic z-rust">Visitor<span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span><span class="z-variable z-other z-rust">$lt</span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span><span class="z-meta z-path z-rust"><span class="z-punctuation z-accessor z-rust">::</span></span>Result</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-keyword z-operator z-rust">?</span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-block z-rust">    <span class="z-comment z-block z-rust"><span class="z-punctuation z-definition z-comment z-rust">/*</span> implementation goes here <span class="z-punctuation z-definition z-comment z-rust">*/</span></span>
+</span></span><span class="z-source z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span>
+</span></code></pre>
+<p>Although trivially copyable, it has a lot of characters and served as an extra step when converting from the normal
+<code>V::Result</code>. I then decided to use a sealed super trait trick in my <a href="https://github.com/rust-lang/rust/pull/142240">latest PR</a>:</p>
+<pre data-lang="rust" class="language-rust z-code"><code class="language-rust" data-lang="rust"><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-storage z-type z-module z-rust">mod</span> <span class="z-entity z-name z-module z-rust">sealed</span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust">    <span class="z-keyword z-other z-rust">use</span> <span class="z-meta z-path z-rust">rustc_ast_ir<span class="z-punctuation z-accessor z-rust">::</span></span><span class="z-meta z-path z-rust">visit<span class="z-punctuation z-accessor z-rust">::</span></span>VisitorResult<span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust">
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust">    <span class="z-comment z-line z-documentation z-rust"><span class="z-punctuation z-definition z-comment z-rust">///</span> This is for compatibility with the regular `Visitor`.
+</span></span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-trait z-rust"><span class="z-storage z-modifier z-rust">pub</span> <span class="z-storage z-type z-trait z-rust">trait</span> <span class="z-entity z-name z-trait z-rust">MutVisitorResult</span> <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-trait z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-type z-rust">type</span> <span class="z-entity z-name z-type z-rust">Result</span><span class="z-punctuation z-separator z-rust">:</span> VisitorResult<span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-trait z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust">
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust">    <span class="z-meta z-impl z-rust"><span class="z-storage z-type z-impl z-rust">impl</span></span><span class="z-meta z-impl z-rust"><span class="z-meta z-generic z-rust"><span class="z-punctuation z-definition z-generic z-begin z-rust">&lt;</span>T<span class="z-punctuation z-definition z-generic z-end z-rust">&gt;</span></span></span><span class="z-meta z-impl z-rust"> MutVisitorResult <span class="z-keyword z-other z-rust">for</span></span><span class="z-meta z-impl z-rust"> <span class="z-entity z-name z-impl z-rust">T</span> </span><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust">        <span class="z-storage z-type z-type z-rust">type</span> <span class="z-entity z-name z-type z-rust">Result</span> <span class="z-keyword z-operator z-assignment z-rust">=</span> <span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-begin z-rust">(</span></span><span class="z-meta z-group z-rust"><span class="z-punctuation z-section z-group z-end z-rust">)</span></span><span class="z-punctuation z-terminator z-rust">;</span>
+</span></span></span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust"><span class="z-meta z-impl z-rust"><span class="z-meta z-block z-rust">    </span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-module z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-keyword z-other z-rust">use</span> <span class="z-meta z-path z-rust">sealed<span class="z-punctuation z-accessor z-rust">::</span></span>MutVisitorResult<span class="z-punctuation z-terminator z-rust">;</span>
+</span><span class="z-source z-rust">
+</span><span class="z-source z-rust"><span class="z-meta z-trait z-rust"><span class="z-storage z-modifier z-rust">pub</span> <span class="z-storage z-type z-trait z-rust">trait</span> <span class="z-entity z-name z-trait z-rust">MutVisitor</span>: Sized + MutVisitorResult&lt;Result = ()&gt; <span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-begin z-rust">{</span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-trait z-rust"><span class="z-meta z-block z-rust">    <span class="z-comment z-block z-rust"><span class="z-punctuation z-definition z-comment z-rust">/*</span> methods go here <span class="z-punctuation z-definition z-comment z-rust">*/</span></span>
+</span></span></span><span class="z-source z-rust"><span class="z-meta z-trait z-rust"><span class="z-meta z-block z-rust"></span><span class="z-meta z-block z-rust"><span class="z-punctuation z-section z-block z-end z-rust">}</span></span></span>
+</span></code></pre>
+<p>Then, we can use <code>V::Result</code> however we like, <em>and</em> it is a drop-in replacement because we <em>know</em> that it is always
+going to be <code>()</code>. Really proud of myself for this one.</p>
+<h2 id="wikimedia-related-stuff">Wikimedia related stuff</h2>
+<h3 id="wikiauthbot-ng">WikiAuthBot-ng</h3>
+<p><a href="https://github.com/fee1-dead/wikiauthbot-ng">This</a> is a bot that uses OAuth to connect users on Discord to their
+identity on Wikipedia. Some Wikipedia-related servers require people to authenticate to talk, while others want to use
+it to allow easy querying of identity from Discord.</p>
+<p>The original version (WikiAuthBot) was written in Python and had a lot of bugs. I rewrote it in Rust and added a lot of
+additional functionalities. Working with databases stood out particularly in my process in making this a completed,
+stable project. I first went with using the provided MariaDB instance on <a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge">Toolforge</a>, then I thought it was too slow and
+switched to using Redis as a persistent storage. Then I thought it was too slow again and I tried SQLite. But Toolforge
+uses NFS for all hosted projects and SQLite is known to not work as optimally via NFS. I then went back to MariaDB and
+it got fast again. All of these involved writing small Rust code that translated data from one place to the other, which
+was quite some hassle.</p>
+<p>In the end though it worked out.</p>
+<h3 id="deadbeefbot">DeadbeefBot</h3>
+<p><a href="https://github.com/fee1-dead/deadbeefbot">This</a> was yet another project. It's tasks can be found on its
+<a href="https://en.wikipedia.org/wiki/User:DeadbeefBot">Wikipedia page</a>, but it essentially helps maintain some formatting of Wikipedia pages. The code was not too hard and I
+worked on its design quite some time already, but it took some procrastinating for me to actually get this registered as
+a cron job. But I got there in the end.</p>
+<h3 id="w"><code>w</code></h3>
+<p>Yeah, it's <a href="https://github.com/fee1-dead/w">another MediaWiki API library</a>. I originally wanted to use the name <code>mw</code>
+seeing that it wasn't used at the time, but it got taken by a <a href="https://crates.io/crates/mw">different</a> crate. I talked
+to the person who took that name and they refused to give it to me. Luckily the even shorter name <code>w</code> was available, so
+yay!</p>
+<p><code>w</code> wants to be minimal because it doesn't want to make assumptions about how one should use it. My previous library was
+a failure as I was too ambitious in wanting to represent all possible API combinations into types (turns out it's so
+huge and messy, and in the end I would've only done the request part only anyways). So I decided to push that onto the
+users. Users should decide how to serialize their requests and deserialize their responses.</p>
+<p><a href="https://gitlab.wikimedia.org/repos/mwbot-rs/mwbot/-/tree/main/mwapi"><code>mwapi</code></a> was a similar library, but my submissiveness to capitalism pushed me towards wanting a less restrictive
+license than GPL, and also because I can't easily <a href="https://phabricator.wikimedia.org/T389030">work on multiple wiki instances at the same time</a>. The latter feature
+was really needed for WikiAuthBot-ng as it needs to work with Wikipedia servers in many different languages (so
+different API instances).</p>
+<p>I hope I can polish it so that it is more ready for general use. I am satisfied about it enough to use it in my new
+projects and I will add to it as I find missing features while using.</p>
+<h3 id="script-syncing-bot">Script syncing bot</h3>
+<p><a href="https://github.com/fee1-dead/usync">This</a> was my solution to a long-running problem on Wikipedia: How can user scripts
+be deployed from GitHub to Wikipedia, as users try to load from the script hosted <em>on</em> Wikipedia? Yeah I know this might
+sound silly but many times it involved primitive copy-pasting locally to update the Wikipedia page.</p>
+<p>This bot is still going through the community processes, but I'm hoping to deploy it soon :D</p>
+<h2 id="lingering-ideas">Lingering ideas</h2>
+<p>Oh I love some of these ideas.</p>
+<h3 id="non-gnu-linux-from-scratch">Non-GNU Linux from Scratch</h3>
+<p>I've always wondered how you can make a Linux system from Scratch without using gcc or GNU libc. I used to love a lot of
+these esoteric Linux software stuff. It's obviously possible: there are <a href="https://os.ewe.moe/about">projects</a> that have
+achieved this feat, but I have yet to see a nice tutorial on a step-by-step construction of this system, similar to the
+legendary LFS book. I hope to write a blogpost when I find out about how myself.</p>
+<h3 id="wasm-based-package-managing">WASM based package managing</h3>
+<p>This is semi-related to the thing above. I've been using Nix for a <em>long</em> time and both the language and the package
+manager are driving me a bit crazy. It's so burdensome to start a new package and/or write your own configuration,
+because there are so many different ways to achieve the same thing and there is no rigid way of how things get to be
+structured.</p>
+<p>I want to fix that, and my Rusted brain wants me to make something in Rust. So I'm thinking of making package
+descriptions from Rust files that will compile to WebAssembly, then get loaded by the package manager. I'm hoping to be
+able to use some of the free time that I have at the moment to try something out, after I had done a complete LFS
+walkthrough and understood the process.</p>
+<h3 id="rustfmt-competitor">Rustfmt competitor</h3>
+<p>I really want a replace for rustfmt because I had a suboptimal experience when trying to improve the codebase. A lot of
+things are locked behind rustfmt's stability guarantee which forbids breaking changes to formatted code and forces new
+things behind an edition gate. I don't like it because I don't think the codebase is solid enough for such a stability
+guarantee to work. More cleanups are necessary. I don't think <a href="https://github.com/tweag/topiary">Topiary</a> will be good
+enough in a reasonable timeframe to compete with rustfmt (it might be a little too ambitious).</p>
+<p>More investigation needed.</p>
+<h3 id="spi-stuff">SPI stuff</h3>
+<p>On Wikipedia there's this process called Sock puppet investigations that investigates whether someone has used multiple
+accounts to abuse. There are two things that I really want to work on, when I get time:</p>
+<ul>
+<li>CheckUsers have access to IP and additional data that helps determine whether two accounts are operated by the same
+person. I want to improve the CheckUser interface because I think the current interface is not streamlined enough for
+a smooth operation. This will start as a user script adding shortcuts, and I plan to gradually add more stuff to have
+a more complete investigation experience.</li>
+<li>SPIs are really hard. Now that we have large language models, it might be really interesting to gather data from past
+cases and see which ones have resulted in blocks being placed and which ones have been declined. There are of course
+levels to that, for example sometimes it might result in CheckUser being run and sometimes it won't. Having data and
+using models to analyze this might give people who work at SPI a lot of insight as to what makes good SPI cases good
+(factoring in variables such as response times, what actions resulted from the report, basic data about the filer and
+the users that have been filed against), and maybe it may also be useful to predict (for fun) the course of new SPI
+cases as they come in.</li>
+</ul>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>I like writing and it is nice to document stuff that I'm doing. But I just do a lot of things and it is sometimes hard
+to fully summarize. I hope after this long post I can pick up and do more regular devlogs next.</p>
+<p>Did you like this post? Let me know :D</p>
+
+
+        
+    
+
+        
+        
+    </article></div>
+    <div class="pagination">
+        <div class="pagination__buttons">
+            </div>
+    </div>
+<footer class="footer">
+                    <div class="footer__inner"><div class="copyright">
+            <span>© 2024 <a href="https://github.com/fee1-dead">beef</a> :: Powered by <a href="https://www.getzola.org/">Zola</a></span>
+            <span>:: Theme: <a href="https://github.com/ejmg/zerm">zerm</a> made by <a href="https://github.com/ejmg">ejmg</a></span>
+        </div>
+    <script type="text/javascript" src="https://dbeef.dev/assets/js/main.js"></script>
+</div>
+                    
+<span><a href="https://dbeef.dev/atom.xml">Atom Feed</a></a></span>
+
+                </footer></div>
+    </body>
+</html>
